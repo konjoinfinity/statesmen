@@ -67,10 +67,7 @@ const Home = () => {
   };
 
   const sendTx = async () => {
-    const { data } = await BdkRn.quickSend({
-      address: recipient,
-      amount: amount,
-    });
+    const { data } = await BdkRn.broadcastTx({ address: recipient, amount: amount });
     setTransaction(data);
     setDisplayText(JSON.stringify(data));
   };
@@ -81,26 +78,8 @@ const Home = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={styles.container}>
-        {/* Header */}
-        <View style={styles.headerSection}>
-          <Image
-            style={{ resizeMode: 'stretch', height: 36, width: 36 }}
-            source={bitcoinLogo}
-          />
-          <Text style={styles.headerText}>BDK-RN Tutorial</Text>
-          <Image
-            style={{ resizeMode: 'center', height: 40, width: 25 }}
-            source={bdkLogo}
-          />
-        </View>
 
-        {/* Balance */}
-        <View style={styles.balanceSection}>
-          <Text style={styles.balanceText} selectable>
-            {'Balance: '}
-          </Text>
-          <Text selectable>{balance ? balance : '0'} Sats</Text>
-        </View>
+        
 
         {/* method call result */}
         {displayText && (
@@ -147,6 +126,14 @@ const Home = () => {
             onPress={getAddress}
           />
         </View>
+{/* Balance */}
+<View style={styles.balanceSection}>
+          <Text style={styles.balanceText} selectable>
+            {'Balance: '}
+          </Text>
+          <Text selectable>{balance ? balance : '0'} Sats</Text>
+        </View>
+
         {/* input boxes and send transaction button */}
         <View style={styles.sendSection}>
           <Fragment>

@@ -1,4 +1,7 @@
 {
   "name": "BdkRnQuickStart",
-  "displayName": "BdkRnQuickStart"
+  "displayName": "BdkRnQuickStart",
+  "expo": {
+    "scheme": "BdkRnQuickStart"
+  }
 }
